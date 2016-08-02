@@ -1,0 +1,9 @@
+"senderID": "692143330873"
+
+APIKEY:AIzaSyCkzLOzVdzLj_FLh2Y2X2k4cKfRt0L8TsQ
+
+debug:
+phonegap push --deviceID fuNfN3w646k:APA91bF09PmuCnUwPYK29-DMNHNdEUa92slZbxV-l3VOxDmRSbUWuwhTWqI95O4h-glR51yRzLhgEttblcgzxa_M4stgp8XMJtZt3TYPOHdudd-gaH4hZ7nEgUnw_IHKB0z61jpqKb1P --service gcm --payload "{ \"data\": { \"title\": \"Hello\", \"message\": \"World\"} }"
+
+cywgin to get registration id.
+adb logcat | grep registration

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    
+
+    <style>
+      body {
+          background-color: black;
+      }
+
+      h1 {
+          color: white;
+          text-align: center;
+          font-weight: bold;
+          font-family: Georgia, "Times New Roman", serif;
+          box-shadow: 0 32px 36px 0 rgba(161,161,161,0.24),0 17px 50px 0 rgba(161,161,161,0.19);
+          font-size: 45px;
+      } 
+      p {
+          color: white;
+          font-weight: bold;
+          font-family: Georgia, "Times New Roman", serif;
+          font-size: 20px;
+      } 
+      p2 {
+          color: red;
+          text-align: left;
+          margin-left: 40px;
+      }
+      p3 {
+          color: white;
+          text-align: right;
+          margin-right: 40px;
+      }
+      p4 {
+          color: white;
+          text-align: right;
+          display: none;
+      }
+      textarea {
+        color:white;
+        background-color: black;
+        text-align: center;
+        display: none;
+        position: relative;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+      }
+      button {
+        
+        color:white;
+        font-size: 60px;
+        background-color: #616161;
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        border-radius: 15px;
+        font-weight: bold;
+        font-family: Georgia, "Times New Roman", serif;
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 8px #999;
+
+
+      }
+      button1 {
+        background-color: #616161; 
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: none;
+        border-radius: 15px;
+        font-size: 20px;
+        box-shadow: 0 4.5px #999;
+        position: relative;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+      }
+      button2 {
+        background-color: black; 
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 15px;
+        font-weight: bold;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 25px;
+        position: relative;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+        box-shadow: 0 22px 26px 0 rgba(161,161,161,0.24),0 17px 50px 0 rgba(161,161,161,0.19);
+      }
+    </style>
+    <title>Hello World</title>
+</head>
+
+<body>
+    <div class="app">
+        <h1>Router Firewall</h1>
+        <div id="registration" class="blink">
+            <p2 class="event waiting">Requesting Registration ID</p2>
+            <p3 class="event received">Registered</p3>
+        </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <button2 id = sw onclick = showPage()>Websites</button2>
+    <script>
+      function showPage() {
+        if(buttonPress) {
+          document.getElementById("w1").style.display = "inline-block";
+          document.getElementById("gmail").style.display = "inline-block";
+          buttonPress = false;
+        }
+        else {
+          document.getElementById("w1").style.display = "none";
+          document.getElementById("gmail").style.display = "none";
+          buttonPress = true;
+        }
+      }
+    </script>
+    <br />
+    <button1 id=w1 onclick= window.open("http://www.google.com","_self") >Want google?</button1>
+    <br />
+    <br />
+    <button1 id=gmail onclick= window.open("http://mail.google.com","_self") >Want gmail?</button1>
+    <br />
+
+    <button id=w2 onclick= clickRP() >Router Page</button>
+    <script>
+        function clickRP() {
+            window.open(addr,"_self");
+        }
+    </script>
+    <style>
+         #w2 {
+            
+        }
+    </style>
+
+
+    
+<!--
+    <button id="bottomButtonOk" onclick= clickButtonOk() >ok</button>
+    <button id="bottomButtonReject" onclick= clickButtonReject() >reject</button>
+    <script>
+        function clickButtonOk() {
+            if(decision == "details") {
+                console.log("ok");
+                decision="ok";
+                sendData({'decision':'ok'});
+                document.getElementById("decision").innerHTML = decision;
+                document.getElementById("decision").style.fontSize = "x-large";
+                document.getElementById("p1").style.fontSize = "x-large";
+            }
+        }
+    </script>
+    <script>
+        function clickButtonReject() {
+            if(decision == "details") {
+                console.log("reject");
+                decision = "reject";
+                sendData({'decision':'reject'});
+                document.getElementById("decision").innerHTML = decision;
+                document.getElementById("decision").style.fontSize = "x-large";
+                document.getElementById("p1").style.fontSize = "x-large";
+            }
+        }
+    </script>
+
+    <style>
+        #bottomButtonOk {
+            position: fixed;
+            width :250px;
+            height:175px;
+            color:darkgreen;
+            left: 20px;
+            bottom:20px;
+            font-size: 50px;
+            background-color: lightgreen;
+        }
+    </style>
+    <style>
+        #bottomButtonReject {
+            position: fixed;
+            width :250px;
+            color:darkred;
+            height:175px;
+            right: 20px;
+            bottom:20px;
+            font-size: 50px;
+            background-color: pink;
+        }
+    </style>
+
+    <button type="button" onclick="sendData({test:'ok'})">Click Me!</button>
+-->
+    <br />
+    <button2 id="RI" onclick = showId()>Registration Id</button2>
+    <script>
+      function showId() {
+        if(buttonPress1) {
+          document.getElementById("FregId").style.display = "inline-block";
+          document.getElementById('FregId').value = regId;
+          buttonPress1 = false;
+        }
+        else {
+          document.getElementById("FregId").style.display = "none";
+          document.getElementById('FregId').value = "";
+          buttonPress1 = true;
+        }
+      }
+    </script>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <form>
+        <!--Registration Id: <input type="text" id="FregId" size=152 value= "" readonly><br>-->
+        <textarea id="FregId" name="Text" cols="50" rows="5" value="" readonly></textarea>
+    </form>
+    <button2 id="ED" onclick = showDetails>Event Details</button2>
+    <script>
+      function showDetails() {
+        if(buttonPress2) {
+          document.getElementById("details1").style.display = "inline-block";
+          document.getElementById("details1").innerHTML = detailsRes;
+          buttonPress2 = false;
+        }
+        else {
+          document.getElementById("FregId").style.display = "none";
+          document.getElementById('FregId').value = "";
+          buttonPress2 = true;
+        }
+      }
+    </script>
+    <p4 id="details1"></p4>
+    
+    
+
+    <!--
+    <script>
+          function sendData(data) {
+          var XHR = new XMLHttpRequest();
+          var urlEncodedData = "";
+          var urlEncodedDataPairs = [];
+          var name;
+
+          // We turn the data object into an array of URL encoded key value pairs.
+          for(name in data) {
+            urlEncodedDataPairs.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]));
+          }
+
+          // We combine the pairs into a single string and replace all encoded spaces to 
+          // the plus character to match the behaviour of the web browser form submit.
+          urlEncodedData = urlEncodedDataPairs.join('&').replace(/%20/g, '+');
+
+          // We define what will happen if the data is successfully sent
+          XHR.addEventListener('load', function(event) {
+            alert('Yeah! Data sent and response loaded.');
+          });
+
+          // We define what will happen in case of error
+          XHR.addEventListener('error', function(event) {
+            alert('Oups! Something goes wrong.');
+          });
+
+          // We setup our request
+          XHR.open('POST', 'https://automated-lore-135923.appspot.com');'http://192.168.1.1/cgi-bin/luci'
+          //XHR.open('POST', 'http://192.168.1.1/cgi-bin/luci');
+          // We add the required HTTP header to handle a form data POST request
+          XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+          XHR.setRequestHeader('Content-Length', urlEncodedData.length);
+
+          // And finally, We send our data.
+          XHR.send(urlEncodedData);
+
+          XHR.onreadystatechange = function() {
+              if (XHR.readyState == 4) {
+                  if( (XHR.status == 200) || (XHR.status == 0) ) {
+                      alert(XHR.responseText);
+                      if(XHR.responseText.length > 5) {
+                        localwifi = true;
+                        alert("wifi:"+localwifi);
+                        if(localwifi) {
+                            alert("you are in the local wifi!")
+                        }
+                        else {
+                            alert("Not in local wifi! Please be in local wifi to change the rules!")
+                        }
+                        //alert("length:"+XHR.responseText.length);
+                      }
+                  }
+                  else {
+                      alert("Error talking to server");
+                  }
+              }
+          }
+
+        }
+    </script>
+    -->
+    <!--
+        <script>
+          function sendData(data,test) { // test is used to signify whether the method is used to test local wifi or registration.
+          var XHR = new XMLHttpRequest();
+          var urlEncodedData = "";
+          var urlEncodedDataPairs = [];
+          var name;
+
+          // We turn the data object into an array of URL encoded key value pairs.
+          for(name in data) {
+            urlEncodedDataPairs.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]));
+          }
+
+          // We combine the pairs into a single string and replace all encoded spaces to 
+          // the plus character to match the behaviour of the web browser form submit.
+          urlEncodedData = urlEncodedDataPairs.join('&').replace(/%20/g, '+');
+
+          // We define what will happen if the data is successfully sent
+          XHR.addEventListener('load', function(event) {
+            alert('Yeah! Data sent and response loaded.');
+          });
+
+          // We define what will happen in case of error
+          XHR.addEventListener('error', function(event) {
+            alert('Oups! Something goes wrong.');
+          });
+
+          // We setup our request
+          //XHR.open('POST', 'https://automated-lore-135923.appspot.com');
+          //XHR.open('POST', 'http://192.168.1.1/cgi-bin/luci');
+          XHR.open('POST', 'http://192.168.1.1/cgi-bin/luci');
+          //XHR.open('POST', 'http://192.168.1.1/cgi-bin/luci');
+          // We add the required HTTP header to handle a form data POST request
+          XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+          XHR.setRequestHeader('Content-Length', urlEncodedData.length);
+
+          // And finally, We send our data.
+          XHR.send(urlEncodedData);
+
+          XHR.onreadystatechange = function() {
+              if (XHR.readyState == 4) {
+                  if( (XHR.status == 200) || (XHR.status == 0) ) {
+                      alert(XHR.responseText);
+                  }
+                  else {
+                      alert("Error talking to server");
+                  }
+              }
+          }
+
+        }
+    </script>
+    -->
+
+</body>
+
+</html>
