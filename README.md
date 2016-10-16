@@ -1,6 +1,18 @@
-# Push PhoneGap Template [![bitHound Score][bithound-img]][bithound-url]
+# Router Firewall PhoneGap Application [![bitHound Score][bithound-img]][bithound-url]
 
-A PhoneGap Push template
+
+##　Basic functions:
+
+(1)Receiving GCM Notification sent by Router.
+
+(2)Parsing the GCM Notification and showing Request Details
+
+(3)Allowing the user making decision and recording it.
+
+(4)Sending back the decision to the router through HTTP XML.
+
+
+### **You could install it by adb installing the apk on your phone.**
 
 ## Usage
 
